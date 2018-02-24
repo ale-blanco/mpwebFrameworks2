@@ -8,7 +8,7 @@ use \MyApp\Component\Product\Domain\Repository\OwnerRepository as IOwnerReposito
 
 class OwnerRepository extends EntityRepository implements IOwnerRepository
 {
-    public function findAllOrderedByName()
+    public function findAllOrderedByName(): array
     {
         return $this->getEntityManager()
             ->createQuery(
