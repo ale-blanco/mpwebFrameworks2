@@ -26,5 +26,4 @@ class Owner
     {
         $this->name = $name;
     }
-
 }
