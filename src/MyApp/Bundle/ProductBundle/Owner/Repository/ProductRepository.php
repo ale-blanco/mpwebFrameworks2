@@ -14,4 +14,12 @@ class ProductRepository extends EntityRepository implements IProductRepository
         $em->persist($product);
         $em->flush();
     }
+
+    public function delete(string $productId): void
+    {
+        $em = $this->getEntityManager();
+        $product = $em->getReference('ProductBundle:Product', $productId);
+        $em->remove($product);
+        $em->flush();
+    }
 }
