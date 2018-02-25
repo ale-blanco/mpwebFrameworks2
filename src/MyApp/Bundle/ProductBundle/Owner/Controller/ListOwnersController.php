@@ -2,7 +2,7 @@
 
 namespace MyApp\Bundle\ProductBundle\Owner\Controller;
 
-use MyApp\Component\Product\Application\CommandHandlers\ListOwners;
+use MyApp\Component\Product\Application\CommandHandlers\Owner\ListOwners;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

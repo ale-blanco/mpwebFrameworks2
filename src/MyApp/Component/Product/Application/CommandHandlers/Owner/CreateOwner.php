@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Component\Product\Application\CommandHandlers;
+namespace MyApp\Component\Product\Application\CommandHandlers\Owner;
 
 use MyApp\Component\Product\Application\Commands\Owner\CreateOwnerCommand;
 use MyApp\Component\Product\Domain\Owner;

@@ -23,4 +23,9 @@ class OwnerRepository extends EntityRepository implements IOwnerRepository
         $em->persist($owner);
         $em->flush();
     }
+
+    public function findOwnerById(string $id): Owner
+    {
+        return $this->findOneBy(['id' => $id]);
+    }
 }

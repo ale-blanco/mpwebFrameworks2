@@ -2,7 +2,8 @@
 
 namespace MyApp\Bundle\ProductBundle\Product\Controller;
 
-use MyApp\Component\Product\Domain\Product;
+use MyApp\Component\Product\Application\CommandHandlers\Product\CreateProduct;
+use MyApp\Component\Product\Application\Commands\Product\CreateProductCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,23 +15,12 @@ class CreateProductController extends Controller
     {
 
         $json = json_decode($request->getContent(), true);
-
-        $name = $json['name'];
-        $price = $json['price'];
-        $description = $json['description'];
-        $ownerId = $json['ownerId'];
-var_dump($ownerId);
-
-        $owner = $this->getDoctrine()->getRepository('\MyApp\Component\Product\Domain\Owner')->findOneBy(['id' => $ownerId]);
-var_dump($owner);
-
-        $product = new Product((string)$name, (float)$price, (string)$description, $owner);
-
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($product);
-        $em->flush();
-
+        $command = new CreateProductCommand($json['name'], $json['price'], $json['description'], $json['ownerId']);
+        $handler = new CreateProduct(
+            $this->getDoctrine()->getRepository('ProductBundle:Owner'),
+            $this->getDoctrine()->getRepository('ProductBundle:Product')
+        );
+        $handler->__invoke($command);
         return new Response('', 201);
 
     }

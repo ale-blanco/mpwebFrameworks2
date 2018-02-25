@@ -8,4 +8,5 @@ interface OwnerRepository
 {
     public function findAllOrderedByName(): array;
     public function saveOwner(Owner $owner): void;
+    public function findOwnerById(string $id): Owner;
 }

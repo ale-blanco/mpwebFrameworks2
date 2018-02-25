@@ -2,7 +2,7 @@
 
 namespace MyApp\Bundle\ProductBundle\Owner\Controller;
 
-use MyApp\Component\Product\Application\CommandHandlers\CreateOwner;
+use MyApp\Component\Product\Application\CommandHandlers\Owner\CreateOwner;
 use MyApp\Component\Product\Application\Commands\Owner\CreateOwnerCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
