@@ -28,4 +28,9 @@ class ProductRepository extends EntityRepository implements IProductRepository
     {
         return $this->findAll(Query::HYDRATE_ARRAY);
     }
+
+    public function findProduct(string $productId): Product
+    {
+        return $this->findOneBy(['id' => $productId]);
+    }
 }
