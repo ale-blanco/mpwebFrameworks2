@@ -8,4 +8,5 @@ interface ProductRepository
 {
     public function save(Product $product): void;
     public function delete(string $productId): void;
+    public function findAllProducts(): array;
 }

@@ -63,4 +63,15 @@ class Product
     {
         $this->owner = $owner;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'price' => $this->getPrice(),
+            'description' => $this->getDescription(),
+            'ownerId' => $this->getOwner()->getId()
+        ];
+    }
 }
