@@ -1,6 +1,6 @@
 MyApp\Component\Product\Domain\Product:
     type: entity
-    repositoryClass: MyApp\Bundle\ProductBundle\Owner\Repository\ProductRepository
+    repositoryClass: MyApp\Bundle\ProductBundle\Product\Repository\ProductRepository
     table: product
     indexes:
         IDX_D34A04AD7E3C61F9:
