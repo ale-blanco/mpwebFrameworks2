@@ -2,6 +2,9 @@
 
 namespace MyApp\Component\Product\Domain;
 
+use MyApp\Component\Product\Domain\Exception\NameProductNotValidException;
+use MyApp\Component\Product\Domain\Exception\PriceProductNotValidException;
+
 class Product
 {
     private $id;
@@ -12,10 +15,10 @@ class Product
 
     public function __construct(string $name, float $price, string $description, Owner $owner)
     {
-        $this->name = $name;
-        $this->price = $price;
-        $this->description = $description;
-        $this->owner = $owner;
+        $this->setName($name);
+        $this->setPrice($price);
+        $this->setDescription($description);
+        $this->setOwner($owner);
     }
 
     public function getId()
@@ -30,8 +33,10 @@ class Product
 
     public function setName($name)
     {
+        if ($name == '') {
+            throw new NameProductNotValidException();
+        }
         $this->name = $name;
-
     }
 
     public function getPrice()
@@ -41,6 +46,9 @@ class Product
 
     public function setPrice($price)
     {
+        if ($price <= 0) {
+            throw new PriceProductNotValidException();
+        }
         $this->price = $price;
     }
 

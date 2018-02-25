@@ -2,6 +2,8 @@
 
 namespace MyApp\Component\Product\Domain;
 
+use MyApp\Component\Product\Domain\Exception\NameOwnerNotValidException;
+
 class Owner
 {
     private $id;
@@ -9,7 +11,7 @@ class Owner
 
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->setName($name);
     }
 
     public function getId()
@@ -24,6 +26,9 @@ class Owner
 
     public function setName($name)
     {
+        if ($name == '') {
+            throw new NameOwnerNotValidException();
+        }
         $this->name = $name;
     }
 
